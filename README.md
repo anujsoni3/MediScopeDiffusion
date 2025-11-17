@@ -1,10 +1,10 @@
-# [cite_start]MediScopeDiffusion: A Diffusion Network for 3D Medical Image Interpretation [cite: 534]
+# MediScopeDiffusion: A Diffusion Network for 3D Medical Image Interpretation 
 
 ![Python 3.11](https://img.shields.io/badge/Python-3.11-blue.svg)
 ![PyTorch](https://img.shields.io/badge/PyTorch-brightgreen.svg)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-[cite_start]This repository contains the official implementation for the project **MediScopeDiffusion**, a novel 3D latent diffusion framework designed for robust, full-volume classification of medical CT scans[cite: 534, 566]. [cite_start]This work addresses the limitations of standard 2D-based approaches [cite: 564] [cite_start]by leveraging a guided diffusion process to learn rich spatial and structural features for improved diagnostic accuracy[cite: 583].
+This repository contains the official implementation for the project **MediScopeDiffusion**, a novel 3D latent diffusion framework designed for robust, full-volume classification of medical CT scans[cite: 534, 566]. [cite_start]This work addresses the limitations of standard 2D-based approaches [cite: 564] [cite_start]by leveraging a guided diffusion process to learn rich spatial and structural features for improved diagnostic accuracy.
 
 
 ---
