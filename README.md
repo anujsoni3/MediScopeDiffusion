@@ -4,7 +4,7 @@
 ![PyTorch](https://img.shields.io/badge/PyTorch-brightgreen.svg)
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
-This repository contains the official implementation for the project **MediScopeDiffusion**, a novel 3D latent diffusion framework designed for robust, full-volume classification of medical CT scans[cite: 534, 566]. [cite_start]This work addresses the limitations of standard 2D-based approaches [cite: 564] [cite_start]by leveraging a guided diffusion process to learn rich spatial and structural features for improved diagnostic accuracy.
+This repository contains the official implementation for the project **MediScopeDiffusion**, a novel 3D latent diffusion framework designed for robust, full-volume classification of medical CT scans. This work addresses the limitations of standard 2D-based approaches by leveraging a guided diffusion process to learn rich spatial and structural features for improved diagnostic accuracy.
 
 
 ---
@@ -27,48 +27,48 @@ This repository contains the official implementation for the project **MediScope
 
 ## 🩺 Problem Statement
 
-[cite_start]Automated 3D medical scan analysis (CT, MRI) is crucial for healthcare, but current deep learning models face significant challenges with robustness[cite: 559, 561].
+Automated 3D medical scan analysis (CT, MRI) is crucial for healthcare, but current deep learning models face significant challenges with robustness.
 
-[cite_start]**Current Challenges**[cite: 560]:
-* [cite_start]**Noise & Artifacts:** Scans are often noisy, which degrades model performance[cite: 562].
-* [cite_start]**High Inter-class Similarity:** Different pathologies can appear visually similar[cite: 563].
-* [cite_start]**2D Limitations:** Analyzing 2D slices individually fails to capture complex 3D spatial relationships[cite: 564].
+**Current Challenges**:
+* **Noise & Artifacts:** Scans are often noisy, which degrades model performance.
+* **High Inter-class Similarity:** Different pathologies can appear visually similar.
+* **2D Limitations:** Analyzing 2D slices individually fails to capture complex 3D spatial relationships.
 
 **Our Research Gap:**
-[cite_start]There is **no dedicated 3D latent diffusion framework** that exists specifically for the task of *volumetric medical image classification*[cite: 566].
+There is **no dedicated 3D latent diffusion framework** that exists specifically for the task of *volumetric medical image classification*.
 
 ---
 
 ## 💡 Our Solution: MediScopeDiffusion
 
-[cite_start]Instead of using diffusion models for image generation, we adapt their powerful feature-learning capability for a classification task[cite: 612]. [cite_start]The model is forced to learn a deep structural understanding of the data by learning to reverse a noise-addition process[cite: 587, 607].
+Instead of using diffusion models for image generation, we adapt their powerful feature-learning capability for a classification task. The model is forced to learn a deep structural understanding of the data by learning to reverse a noise-addition process.
 
 Our methodology, detailed in the `dffmet3d.ipynb` notebook, is a two-phase process:
 
 ### Phase 1: DCG Pre-training
 A simplified **Dual-Channel Guidance (DCG)** model (approx. 457k parameters) is first trained to act as a strong, lightweight feature extractor. It combines two priors:
 
-* [cite_start]**Global Prior ($\hat{y}_g$):** Captures the overall, coarse anatomical context from the entire scan[cite: 667].
-* [cite_start]**Local Prior ($\hat{y}_l$):** Captures fine-grained details by focusing on salient Regions of Interest (ROIs) identified by a saliency map[cite: 668, 673].
+* **Global Prior ($\hat{y}_g$):** Captures the overall, coarse anatomical context from the entire scan.
+* **Local Prior ($\hat{y}_l$):** Captures fine-grained details by focusing on salient Regions of Interest (ROIs) identified by a saliency map.
 
 ### Phase 2: Guided Diffusion Training
-[cite_start]The pre-trained DCG model then provides guidance to the main 3D U-Net diffusion model[cite: 737]. This process is steered by two key components derived from the DCG's outputs:
+The pre-trained DCG model then provides guidance to the main 3D U-Net diffusion model. This process is steered by two key components derived from the DCG's outputs:
 
-* [cite_start]**Dense Guidance Map (M):** A learned 3D map that indicates whether the diffusion model should trust the global or local prior at different spatial locations[cite: 701].
-* [cite_start]**Image Feature Prior (F):** A fused feature vector that provides rich contextual information to the U-Net by capturing both global and local structures through attention[cite: 704].
+* **Dense Guidance Map (M):** A learned 3D map that indicates whether the diffusion model should trust the global or local prior at different spatial locations.
+* **Image Feature Prior (F):** A fused feature vector that provides rich contextual information to the U-Net by capturing both global and local structures through attention.
 
-[cite_start]The entire diffusion process operates in a compressed **Latent Space** to ensure it remains computationally efficient and can run on standard hardware[cite: 735, 739].
+[cite_start]The entire diffusion process operates in a compressed **Latent Space** to ensure it remains computationally efficient and can run on standard hardware.
 
 ---
 
 ## 📊 Results & Progress
 
-[cite_start]As outlined in our project presentation, our progress is as follows[cite: 751]:
+As outlined in our project presentation, our progress is as follows:
 
-* [cite_start]**Architecture Design:** The end-to-end framework has been fully designed, including the 3D Dense Guidance Map (M), Feature Prior (F), and the Heterologous Diffusion Process[cite: 754]. The model architecture has been simplified to ~457k parameters to better suit the dataset size.
-* [cite_start]**Dataset Preparation:** A dataset has been prepared using radiological findings from CT scans to classify the presence of viral pneumonia[cite: 755].
+* **Architecture Design:** The end-to-end framework has been fully designed, including the 3D Dense Guidance Map (M), Feature Prior (F), and the Heterologous Diffusion Process. The model architecture has been simplified to ~457k parameters to better suit the dataset size.
+* **Dataset Preparation:** A dataset has been prepared using radiological findings from CT scans to classify the presence of viral pneumonia.
 * **Implementation:** The complete, corrected pipeline is implemented in the `dffmet3d.ipynb` notebook.
-* [cite_start]**Next Steps:** The immediate next steps are to complete the full training run and benchmark the results against state-of-the-art classifiers[cite: 758, 759].
+* **Next Steps:** The immediate next steps are to complete the full training run and benchmark the results against state-of-the-art classifiers.
 
 ---
 
@@ -91,8 +91,8 @@ The dataset used in this project is based on the **3D image classification** in 
 
 | Dataset | Label | Download Link (Please upload and replace) |
 | :--- | :---: | :--- |
-| Normal (CT-0) | 0 | `[PASTE GITHUB RELEASE LINK FOR CT-0.zip HERE]` |
-| Abnormal (CT-23) | 1 | `[PASTE GITHUB RELEASE LINK FOR CT-23.zip HERE]` |
+| Normal (CT-0) | 0 | `(https://github.com/hasibzunair/3D-image-classification-tutorial/releases/download/v0.2/CT-0.zip)` |
+| Abnormal (CT-23) | 1 | `https://github.com/hasibzunair/3D-image-classification-tutorial/releases/download/v0.2/CT-23.zip` |
 
 ### How to Run the Notebook
 
@@ -113,16 +113,13 @@ The dataset used in this project is based on the **3D image classification** in 
 ## 🧑‍💻 Project Team
 
 ### Students
-* [cite_start]Fahad Ahmad (BT23CSD035) [cite: 539, 540]
-* [cite_start]Ansh Bharadwaj (BT23CSD063) [cite: 541, 542]
-* [cite_start]Anuj Soni (BT23CSD065) [cite: 543, 544]
-* [cite_start]Yash Kumar Saini (BT23CSD066) [cite: 545, 546]
+* Naina Rai (BT23CSD011) 
+* Ansh Bharadwaj (BT23CSD063) 
+* Anuj Soni (BT23CSD065) 
+* Yash Kumar Saini (BT23CSD066)
 
-### Supervisors
-* [cite_start]Mr. Pravin S. Bhagat [cite: 536]
-* [cite_start]Ms. Nayna Potdukhe [cite: 537]
 
-[cite_start]**Institution:** Indian Institute of Information Technology, Nagpur (IIITN) [cite: 531]
+**Institution:** Indian Institute of Information Technology, Nagpur (IIITN) 
 
 ---
 
